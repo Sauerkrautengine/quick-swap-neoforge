@@ -5,6 +5,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - mc: "26.3"
+            neo: "26.3.0.37-beta"
+          - mc: "26.2"
+            neo: "26.2.0.1-beta"
+          - mc: "26.1.2"
+            neo: "26.1.2.109"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -14,8 +24,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 9.7.1
-      - run: gradle build
+      - run: gradle build -Pminecraft_version=${{ matrix.mc }} -Pneo_version=${{ matrix.neo }}
       - uses: actions/upload-artifact@v4
         with:
-          name: quick-swap-hotkeys-neoforge-mod
+          name: neoforge-${{ matrix.mc }}
           path: build/libs/*.jar
