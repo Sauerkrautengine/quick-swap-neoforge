@@ -11,13 +11,13 @@ description = '''Totem in die Offhand und Elytra/Brustplatte wechseln per Hotkey
 [[dependencies.quick_swap_hotkeys]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.3,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.quick_swap_hotkeys]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.3,26.4)"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "CLIENT"
